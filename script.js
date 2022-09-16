@@ -47,6 +47,9 @@ function playRound(playerSelection,computerSelection) {
     return roundDecision;
 }
 
-playRound(playerSelection,computerSelection);
-
-console.log(playerSelection,computerSelection,roundDecision)
+function game(){
+    for(let i = 0; i= 5; i++){
+        console.log(playRound(playerSelection,computerSelection));
+        
+    }
+}
