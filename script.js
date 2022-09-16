@@ -1,28 +1,52 @@
-// make a function where the CPU picks a number between 1-3 at random
-// create conditions where 1 - rock , 2 = paper , 3 = scissors
-// make sure function returns the value 
-//
-
-
+let computerSelection;
+let roundDecision;
 
 function getComputerChoice(min,max) {
-    return Math.floor(Math.random() * (max - min + 1) + min);
-
+    let choice = Math.floor(Math.random() * (max - min + 1) + min);
+        if (choice === 1){
+            computerSelection = "rock"
+        } else if (choice === 2){
+            computerSelection = "paper"
+        } else if (choice === 3){
+            computerSelection = "scissors"
+        }
+        return computerSelection;
 }
 
-let randomChoice = getComputerChoice(1,3)
-let playerRoll = prompt("Pick rock, paper, or scissors,","")
-let pcRoll;
-if (randomChoice === 1) {
-    pcRoll = "rock"
-    
-} else if (randomChoice === 2) {
-    pcRoll = "paper";
-    
-} else {
-    pcRoll = "Scissors";
-    
+getComputerChoice(1,3);
+
+
+let answer = prompt('Enter your choice of rock, paper, or scissors.',"");
+let playerSelection = answer.toLowerCase();
+
+function playRound(playerSelection,computerSelection) {
+    if ( playerSelection === "rock" && computerSelection ==="rock"){
+        roundDecision = "Draw!";
+    } else if (playerSelection === "rock" && computerSelection === "paper"){
+        roundDecision = "You lose!";
+    } else if (playerSelection === "rock" && computerSelection === "scissors"){
+        roundDecision = "You win!"
+    }
+    if ( playerSelection === "paper" && computerSelection ==="rock"){
+        roundDecision = "You win!";
+    } else if (playerSelection === "paper" && computerSelection === "paper"){
+        roundDecision = "Draw!";
+    } else if (playerSelection === "paper" && computerSelection === "scissors"){
+        roundDecision = "You lose!"
+    }
+    if ( playerSelection === "scissors" && computerSelection ==="rock"){
+        roundDecision = "You Lose!";
+    } else if (playerSelection === "scissors" && computerSelection === "paper"){
+        roundDecision = "You Win!";
+    } else if (playerSelection === "scissors" && computerSelection === "scissors"){
+        roundDecision = "Draw!"
+    } else {
+        alert("Please enter rock, paper, or scissors.")
+    }
+
+    return roundDecision;
 }
 
-console.log(playerRoll);
-console.log(pcRoll);
+playRound(playerSelection,computerSelection);
+
+console.log(playerSelection,computerSelection,roundDecision)
