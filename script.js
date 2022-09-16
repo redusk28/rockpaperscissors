@@ -40,16 +40,10 @@ function playRound(playerSelection,computerSelection) {
         roundDecision = "You Win!";
     } else if (playerSelection === "scissors" && computerSelection === "scissors"){
         roundDecision = "Draw!"
-    } else {
-        alert("Please enter rock, paper, or scissors.")
-    }
-
+    } 
     return roundDecision;
 }
 
-function game(){
-    for(let i = 0; i= 5; i++){
-        console.log(playRound(playerSelection,computerSelection));
-        
-    }
-}
+playRound(playerSelection,computerSelection);
+
+console.log(playerSelection,computerSelection,roundDecision)
