@@ -1,3 +1,5 @@
+/// to do list : make it so that during the five rounds played, a new rock paper or scissor are asked instead of using the inital input for all 5 rounds. 
+
 
 let computerSelection;
 let roundDecision;
