@@ -1,8 +1,9 @@
-/// to do list : make it so that during the five rounds played, a new rock paper or scissor are asked instead of using the inital input for all 5 rounds. 
-
 
 let computerSelection;
 let roundDecision;
+let playerSelection;
+let computerCount = 0;
+let playerCount = 0;
 
 function getComputerChoice(min,max) {
     let choice = Math.floor(Math.random() * (max - min + 1) + min);
@@ -19,14 +20,17 @@ function getComputerChoice(min,max) {
 
 
 
-let answer = prompt('Enter your choice of rock, paper, or scissors.',"");
-let playerSelection = answer.toLowerCase();
+function yourTurn(){
+    let answer = prompt('Enter your choice of rock, paper, or scissors.',"");
+    return answer;
+    
+}
 
-let computerCount = 0;
-let playerCount = 0;
-
-function playRound(playerSelection,computerSelection) {
+function playRound(you,pc) {
   computerSelection = getComputerChoice(1,3);
+    playerSelection = yourTurn()
+    playerSelection = playerSelection.toLowerCase();
+
   
     if ( playerSelection === "rock" && computerSelection ==="rock"){
         roundDecision = "Draw!";
@@ -54,7 +58,12 @@ function playRound(playerSelection,computerSelection) {
         playerCount = playerCount + 1;
     } else if (playerSelection === "scissors" && computerSelection === "scissors"){
         roundDecision = "Draw!"
-    } 
+    } else if (playerSelection !== "rock" && 
+    playerSelection !== "paper" && 
+    playerSelection !== "scissors" ) {
+        alert('Please Enter a valid response');
+        playRound();
+    }
     return roundDecision,playerSelection,computerSelection, playerCount, computerCount;
     
 }
@@ -62,9 +71,11 @@ function playRound(playerSelection,computerSelection) {
 
 
 function game(){
+    alert('Prepare to enter your choices for 5 rounds of Rock, Paper, Scissors.')
   for (let i = 0; i < 5; i++) {
    
    playRound(playerSelection,computerSelection);
+   
    
    console.log(playerSelection, computerSelection, roundDecision,playerCount,computerCount);
   }
