@@ -72,7 +72,7 @@ function playRound(you,pc) {
 
 function game(){
     alert('Prepare to enter your choices for 5 rounds of Rock, Paper, Scissors.')
-  for (let i = 0; i < 5; i++) {
+  while (playerCount !== 5 && computerCount !== 5) {
    
    playRound(playerSelection,computerSelection);
    
