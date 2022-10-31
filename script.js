@@ -8,6 +8,10 @@ const displayResult = function (message) {
   document.querySelector('.rounddecision').textContent = message;
 };
 
+const bgColor = function (color) {
+  document.querySelector('body').style.backgroundColor = color;
+};
+
 // --------------------------------------------
 function getComputerChoice(min, max) {
   let choice = Math.floor(Math.random() * (max - min + 1) + min);
@@ -67,10 +71,16 @@ buttons.addEventListener('click', event => {
   playerSelection = event.target.id;
   playRound(playerSelection, computerSelection);
 
-  if (playerCount === 5) {
+  if (playerCount >= 5) {
     roundDecision = 'congrats, You beat the computer! 🏆 ';
-  } else if (computerCount === 5) {
+    document.getElementById('rock').disabled = true;
+    document.getElementById('paper').disabled = true;
+    document.getElementById('scissors').disabled = true;
+  } else if (computerCount >= 5) {
     roundDecision = 'You have lost to the computer.. Try again ❌';
+    document.getElementById('rock').disabled = true;
+    document.getElementById('paper').disabled = true;
+    document.getElementById('scissors').disabled = true;
   }
   displayResult(roundDecision);
   document.querySelector('.playerscore').textContent = playerCount;
@@ -83,5 +93,10 @@ buttons.addEventListener('click', event => {
     document.querySelector('.computerscore').textContent = computerCount;
     document.querySelector('.rounddecision').textContent =
       'Prepare to play a first to five against the computer!';
+    bgColor('#9e9ea9');
+    document.getElementById('rock').disabled = false;
+    document.getElementById('paper').disabled = false;
+    document.getElementById('scissors').disabled = false;
   });
+  playerCount === 5 ? bgColor('#50b347') : bgColor('#9e9ea9');
 });
